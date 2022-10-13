@@ -1,0 +1,5 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS enthusiast_db;
+
+-- CREATE DATABASE
+CREATE DATABASE enthusiast_db;
