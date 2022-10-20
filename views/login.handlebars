@@ -1,17 +1,22 @@
-<div class="w3-card-4">
-  <div class="w3-container w3-gray">
-    <h2>Login</h2>
-  </div>
-  <form class="w3-container">
-    <p>      
-    <label class="w3-text-gray"><b>Username</b></label>
-    <input class="w3-input w3-border w3-sand" id="username-login" name="username-login" type="text"></p>
-    <p>      
-    <label class="w3-text-gray"><b>Password</b></label>
-    <input class="w3-input w3-border w3-sand" id="password-login" name="password-login" type="password"></p>
-    <p>
-    <button type="submit" class="w3-btn w3-gray">Login</button></p>
-  </form>
-</div>
+<div class="card">
+        <div class="card-header form-title">
+          <h3>Login</h3>
+        </div>
+        <div class="card-body form-bg-custom">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="usernameInput">Username</label>
+                <input type="text" class="form-control" id="username-login" />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="passwordInput">Password</label>
+                <input type="password" class="form-control" id="password-login">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-custom">Login</button>
+          </form>
+        </div>
+      </div>
 
 <script src="/javascript/login.js"></script>
