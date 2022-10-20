@@ -155,4 +155,4 @@ router.delete('/:id', withAuth, (req, res) => {
     });
 });
 
-module.exports = User;
+module.exports = router;
