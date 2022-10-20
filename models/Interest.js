@@ -17,12 +17,15 @@ Interest.init(
         key: 'id'
       }
     },
-    post_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'post',
-        key: 'id'
-      }
+    hobby: {
+        type: DataTypes.STRING,
+        allowNull: false, 
+        unique: false
+    },
+    status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: false
     }
   },
   {
@@ -30,8 +33,8 @@ Interest.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'like'
+    modelName: 'interest'
   }
 );
 
-module.exports = Like;
+module.exports = Interest;
