@@ -63,6 +63,8 @@ router.post('/', (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
+    name_first: req.body.name_first,
+    name_last: req.body.name_last
   }).then((dbUserData) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
@@ -154,8 +156,4 @@ router.delete('/:id', withAuth, (req, res) => {
     });
 });
 
-<<<<<<< HEAD
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> f645e97dbd0e52cc6b8923b5de3df1434f69b384
