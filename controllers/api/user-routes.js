@@ -115,7 +115,6 @@ router.post('/logout', (req, res) => {
 //update user info
 router.put('/:id', withAuth, (req, res) => {
   //expects {username: 'name', email:'name@email.com, password: 'password1}
-  //if req.body has exact key/value to match model . req.body is just fine
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -154,3 +153,5 @@ router.delete('/:id', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+
+module.exports = router;
