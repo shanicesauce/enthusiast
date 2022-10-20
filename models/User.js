@@ -32,14 +32,14 @@ User.init(
       }
     },
     name_first: {
-        type: DataTypes.STRING,
-        allowNull: false, 
-        unique: false
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: false
     },
     name_last: {
-        type: DataTypes.STRING,
-        allowNull: false, 
-        unique: false
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: false
     },
     password: {
       type: DataTypes.STRING,
