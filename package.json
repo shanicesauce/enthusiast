@@ -30,8 +30,6 @@
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
-    "connect-session-sequelize": "^6.1.1",
-    "express-session": "^1.17.0",
     "sequelize": "^6.25.1"
   },
   "devDependencies": {
