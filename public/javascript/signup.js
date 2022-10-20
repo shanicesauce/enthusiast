@@ -1,7 +1,6 @@
 async function signupFormHandler(event) {
   event.preventDefault();
 
-
   const firstName = document.querySelector('#firstName-signup').value.trim();
   const lastName = document.querySelector('#lastName-signup').value.trim();
   const username = document.querySelector('#username-signup').value.trim();
@@ -16,9 +15,9 @@ async function signupFormHandler(event) {
         lastName,
         username,
         email,
-        password
+        password,
       }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
@@ -29,4 +28,6 @@ async function signupFormHandler(event) {
   }
 }
 
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+document
+  .querySelector('.signup-form')
+  .addEventListener('submit', signupFormHandler);
