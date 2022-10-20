@@ -1,20 +1,52 @@
-<div class="w3-card-4">
-  <div class="w3-container w3-gray">
-    <h2>Login</h2>
+<div class="card">
+  <div class="card-header">
+    Create Your Profile
   </div>
-  <form class="w3-container">
-    <p>      
-    <label class="w3-text-gray"><b>Email</b></label>
-    <input class="w3-input w3-border w3-sand" id="email-signup" name="email-signup" type="text"></p>     
-    <p>      
-    <label class="w3-text-gray"><b>Username</b></label>
-    <input class="w3-input w3-border w3-sand" id="username-signup" name="username-signup" type="text"></p>
-    <p>      
-    <label class="w3-text-gray"><b>Password</b></label>
-    <input class="w3-input w3-border w3-sand" id="password-signup" name="password-signup" type="password"></p>
-    <p>
-    <button type="submit" class="w3-btn w3-gray">Sign Up!</button></p>
-  </form>
-</div>
+  <div class="card-body">
+    <form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="email-signup">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="password-signup">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputUsername4">Username</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputInterest">Choose An Interest</label>
+      <select id="inputInterest" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Hobby
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="gridCheck">
+        Amateur
+      </label>
+      </div>
+      <div class="form-check">
+      <label class="form-check-label" for="gridCheck">
+        Professional
+      </label>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign Up!</button>
+</form>
 
 <script src="/javascript/login.js"></script>
