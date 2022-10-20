@@ -63,6 +63,8 @@ router.post('/', (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
+    name_first: req.body.name_first,
+    name_last: req.body.name_last
   }).then((dbUserData) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
@@ -115,7 +117,6 @@ router.post('/logout', (req, res) => {
 //update user info
 router.put('/:id', withAuth, (req, res) => {
   //expects {username: 'name', email:'name@email.com, password: 'password1}
-  //if req.body has exact key/value to match model . req.body is just fine
   User.update(req.body, {
     individualHooks: true,
     where: {
