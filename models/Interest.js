@@ -18,14 +18,14 @@ Interest.init(
       }
     },
     hobby: {
-        type: DataTypes.STRING,
-        allowNull: false, 
-        unique: false
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: false
     },
     status: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: false
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: false
     }
   },
   {
