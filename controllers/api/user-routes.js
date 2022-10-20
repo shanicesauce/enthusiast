@@ -154,4 +154,8 @@ router.delete('/:id', withAuth, (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> f645e97dbd0e52cc6b8923b5de3df1434f69b384
