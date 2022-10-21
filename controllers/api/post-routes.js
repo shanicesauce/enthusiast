@@ -5,6 +5,9 @@ const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
   Post.findAll({
+    where: {
+      interest_id: req.params.interest_id
+    },
     attributes: [
       'id',
       'post_text',
