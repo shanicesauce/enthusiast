@@ -1,11 +1,14 @@
 const router = require('express').Router();
-const { User, Post, Like, Comment } = require('../../models');
+const { User, Post, Like, Comment, Interest } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //GET /api/users
 router.get('/', (req, res) => {
   //access user model and run find all
   User.findAll({
+    where: {
+      interest_id: req.params.interest_id
+    },
     attributes: { exclude: ['password'] },
   })
     .then((dbUserData) => res.json(dbUserData))
@@ -24,7 +27,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ['id', 'title', 'post_url', 'created_at'],
+        attributes: ['id', 'title', 'post_text', 'created_at'],
       },
       {
         model: Comment,
@@ -40,6 +43,10 @@ router.get('/:id', (req, res) => {
         through: Like,
         as: 'liked_post',
       },
+      {
+        model: Interest,
+        attributes: [''] ,
+      }
     ],
   })
     .then((dbUserData) => {
@@ -56,7 +63,6 @@ router.get('/:id', (req, res) => {
 });
 
 //new user
-// eslint-disable-next-line no-unused-vars
 router.post('/', (req, res) => {
   //expects {username: 'name', email:'name@email.com, password: 'password1}
   User.create({
@@ -64,7 +70,8 @@ router.post('/', (req, res) => {
     email: req.body.email,
     password: req.body.password,
     name_first: req.body.name_first,
-    name_last: req.body.name_last
+    name_last: req.body.name_last,
+    interest_id: req.body.interest_id
   }).then((dbUserData) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;

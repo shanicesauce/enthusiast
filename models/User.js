@@ -41,6 +41,13 @@ User.init(
       allowNull: false,
       unique: false
     },
+    interest_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'interest',
+        key: 'id'
+      }
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
