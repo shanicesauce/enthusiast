@@ -6,9 +6,6 @@ const withAuth = require('../../utils/auth');
 router.get('/', (req, res) => {
   //access user model and run find all
   User.findAll({
-    where: {
-      interest_id: req.params.interest_id
-    },
     attributes: { exclude: ['password'] },
   })
     .then((dbUserData) => res.json(dbUserData))
