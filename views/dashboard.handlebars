@@ -1,0 +1,32 @@
+    <div class="card my-5">
+        <h2 class="card-header form-title">Create New Post</h2>
+        <div class="card-body form-bg-custom">
+          <form>
+            <div class="form-group">
+              <div>
+                <textarea class="form-control" rows="5" id="post-content" name="post-content"
+                ></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-custom">Submit Post</button>
+          </form>
+        </div>
+      </div>
+
+      {{#if posts.length}}
+      <section>
+        <h2 class="section-title">Your Posts</h2>
+        <ol>
+          {{#each posts as |post|}}
+          <li>
+           {{> post-info post}}
+            <button href="/dashboard/edit/{{post.id}}" class="btn" id="edit-post-btn">
+                Edit Post
+            </button>
+          </li>
+           {{/each}}
+        </ol>
+      </section>
+      {{/if}}
+
+      <script src="/javascript/add-post.js"></script>
