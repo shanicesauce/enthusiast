@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
   Post.findAll({
     attributes: [
       'id',
-      'post_text',
+      'post_url',
       'title',
       'created_at',
       [
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
         'like_count',
       ],
     ],
-    // order: [['created_at', 'DESC']],
+    order: [['created_at', 'DESC']],
     include: [
       {
         model: Comment,
@@ -60,10 +60,15 @@ router.get('/post/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'post_text',
+      'post_url',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'
+        ),
+        'like_count',
+      ],
     ],
     include: [
       {
