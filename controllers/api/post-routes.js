@@ -1,21 +1,18 @@
 const router = require('express').Router();
 const { Post, User, Like, Comment } = require('../../models');
-const sequelize = require('../../config/connection');
+// const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
   Post.findAll({
-    where: {
-      interest_id: req.params.interest_id
-    },
     attributes: [
       'id',
       'post_text',
       'title',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count',],
+      'created_at'
+      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
     ],
-    // order: [['created_at', 'DESC']],
+    order: [['created_at', 'DESC']],
     include: [
       {
         model: Comment,
@@ -46,8 +43,8 @@ router.get('/:id', (req, res) => {
       'id',
       'post_text',
       'title',
-      'created_at'[
-        (sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = like.post_id)'), 'like_count')],
+      'created_at'
+      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
     ],
     include: [
       {
