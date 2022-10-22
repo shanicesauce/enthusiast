@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Like, Comment, Interest } = require('../../models');
+const { User, Post, Like, Comment, Interest, InterestLevel } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //GET /api/users
@@ -17,40 +17,44 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   User.findOne({
-    attributes: { exclude: ['password'] },
     where: {
       id: req.params.id,
     },
+    attributes: { exclude: ['password'] },
     include: [
       {
+        model: Interest,
+        attributes: ['hobby'],
+      },
+      {
+        model: InterestLevel,
+        attributes: ['id','level'] ,
+      },
+      {
         model: Post,
-        attributes: ['id', 'title', 'post_text', 'created_at'],
+        attributes: ['id', 'post_text', 'created_at'],
       },
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'created_at'],
         include: {
           model: Post,
-          attributes: ['title'],
+          attributes: ['post_text'],
         },
       },
       {
         model: Post,
-        attributes: ['title'],
         through: Like,
         as: 'liked_post',
+        attributes: ['post_text'],
       },
-      {
-        model: Interest,
-        attributes: [''] ,
-      }
     ],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.json(dbUserData);
+        res.status(400).json({ message: 'No user found, look again' });
       }
-      res.status(400).json({ message: 'No user found, look again' });
+      res.json(dbUserData);
       return;
     })
     .catch((err) => {

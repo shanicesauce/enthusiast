@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Like, Comment } = require('../../models');
+const { Post, User, Like, Comment, Interest, InterestLevel } = require('../../models');
 // const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
     attributes: [
       'id',
       'post_text',
-      'title',
       'created_at'
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
     ],
@@ -25,6 +24,18 @@ router.get('/', (req, res) => {
       {
         model: User,
         attributes: ['username'],
+        include: {
+          model: InterestLevel,
+          attributes: ['id', 'level']
+        },
+        include:{
+          model: Interest,
+          attributes: ['id','hobby'],
+        },
+        include:{
+          model: InterestLevel,
+          attributes: ['id','level'],
+        },
       },
     ],
   })
@@ -42,7 +53,6 @@ router.get('/:id', (req, res) => {
     attributes: [
       'id',
       'post_text',
-      'title',
       'created_at'
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
     ],
@@ -58,6 +68,10 @@ router.get('/:id', (req, res) => {
       {
         model: User,
         attributes: ['username'],
+        include:{
+          model: Interest,
+          attributes: ['id','hobby'],
+        },
       },
     ],
   })
@@ -76,9 +90,8 @@ router.get('/:id', (req, res) => {
 
 //create post
 router.post('/', withAuth, (req, res) => {
-  //expects {title: 'Taskmaster goes public!', post_text: 'https://taskmaster.com/press', user_id: 1}
+  //expects { post_text: 'https://taskmaster.com/press', user_id: 1}
   Post.create({
-    title: req.body.title,
     post_text: req.body.post_text,
     user_id: req.session.user_id,
   })
@@ -107,9 +120,6 @@ router.put('/uplike', withAuth, (req, res) => {
 //update existing entry
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
-    {
-      title: req.body.title,
-    },
     {
       where: {
         id: req.params.id,
