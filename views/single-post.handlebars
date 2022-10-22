@@ -1,13 +1,32 @@
-{{> post-info post }} 
+{{!-- {{> post-info post }}  --}}
+<div class="card my-5">
+  <div class="card-header form-title">
+    <p>
+      <a class="card-header" href="/post/{{id}}">{{post_text}}</a>
+    </p>
+  </div>
+  <div class="card-body form-bg-custom">
+    <p>
+      {{post_text}}
+    </p>
+    by
+    {{user.username}}
+    on
+    {{format_date created_at}}
+    <a class="app-link" href="/post/{{id}}">{{comments.length}}
+      {{format_plural "comment" comments.length}}</a>
+  </div>
+</div>
 
 {{!-- {{#if loggedIn}}       --}}
       <div class="card my-5">
         <div class="card-body form-bg-custom">
-          <form>
+          <form class="comment-form">
             <div class="form-group">
               <textarea
                 class="form-control"
                 id="comment"
+                name="comment-body"
                 rows="3"
               ></textarea>
             </div>
@@ -17,7 +36,7 @@
       </div>
       {{!-- {{/if}}  --}}
       
-      {{> comments post.comments}} 
+      {{!-- {{> comments post.comments}}  --}}
       
       {{!-- {{#if loggedIn}} --}}
       <script src="/javascript/comment.js"></script>
