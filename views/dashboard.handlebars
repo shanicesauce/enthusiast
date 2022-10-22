@@ -4,6 +4,9 @@
     <form id="new-post-form" name="">
       <div class="form-group">
         <div>
+          <h3>Upload Image</h3>
+          <form method="POST" action="/upload" enctype="multipart/form-data"></form>
+          <input type="file" name="image">
           <textarea
             class="form-control"
             rows="5"

@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
   Post.findAll({
     attributes: [
       'id',
+      'image',
       'post_text',
       'created_at'
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
@@ -46,6 +47,7 @@ router.get('/post/:id', (req, res) => {
     },
     attributes: [
       'id',
+      'image',
       'post_text',
       'created_at'
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)''like_count',],

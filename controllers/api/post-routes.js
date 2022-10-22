@@ -4,10 +4,23 @@ const { Post, User, Like, Comment, Interest, InterestLevel } = require('../../mo
 const withAuth = require('../../utils/auth');
 const multer = require('multer');
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'Images')
+  },
+  filename: (req, file, cb) => {
+    console.log(file)
+    cb(null, Date.now() + path.extname(file.originalname))
+  }
+});
+
+const upload = multer({storage: storage});
+
 router.get('/', (req, res) => {
   Post.findAll({
     attributes: [
       'id',
+      'image',
       'post_text',
       'created_at'
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
@@ -53,6 +66,7 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
+      'image',
       'post_text',
       'created_at'
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
@@ -90,9 +104,10 @@ router.get('/:id', (req, res) => {
 });
 
 //create post
-router.post('/', withAuth, (req, res) => {
+router.post('/', upload.single('image'), withAuth, (req, res) => {
   //expects { post_text: 'https://taskmaster.com/press', user_id: 1}
   Post.create({
+    image: req.body.image,
     post_text: req.body.post_text,
     user_id: req.session.user_id,
   })
