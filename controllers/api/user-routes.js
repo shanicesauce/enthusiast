@@ -68,7 +68,7 @@ router.post('/', (req, res) => {
     password: req.body.password,
     name_first: req.body.name_first,
     name_last: req.body.name_last,
-    interest_id: req.body.interest_id
+    hobby: req.body.hobby
   }).then((dbUserData) => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
@@ -89,11 +89,11 @@ router.post('/login', (req, res) => {
   //expects {username: 'name', password: 'password1}
   User.findOne({
     where: {
-      email: req.body.email,
+      username: req.body.username,
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address' });
+      res.status(400).json({ message: 'No user with that username' });
       return;
     }
     const validPassword = dbUserData.checkPassword(req.body.password);
