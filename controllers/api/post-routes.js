@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
     attributes: [
       'id',
       'post_text',
-      'title',
       'created_at'
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
     ],
@@ -42,7 +41,6 @@ router.get('/:id', (req, res) => {
     attributes: [
       'id',
       'post_text',
-      'title',
       'created_at'
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
     ],
@@ -78,7 +76,6 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   //expects {title: 'Taskmaster goes public!', post_text: 'https://taskmaster.com/press', user_id: 1}
   Post.create({
-    title: req.body.title,
     post_text: req.body.post_text,
     user_id: req.session.user_id,
   })
@@ -107,9 +104,6 @@ router.put('/uplike', withAuth, (req, res) => {
 //update existing entry
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
-    {
-      title: req.body.title,
-    },
     {
       where: {
         id: req.params.id,

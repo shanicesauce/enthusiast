@@ -44,7 +44,7 @@ Post.init(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     post_text: {
       type: DataTypes.STRING,
