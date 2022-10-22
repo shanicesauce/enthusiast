@@ -4,6 +4,7 @@ const User = require('./User');
 const Like = require('./Like');
 const Comment = require('./Comment');
 const Interest = require('./Interest');
+const InterestLevel = require('./IntrestLevel');
 
 // create associations
 User.hasMany(Post, {
@@ -67,13 +68,21 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id',
 });
 
-User.hasOne(Interest, {
-  foreignKey: 'user_id',
+User.belongsTo(Interest, {
+  foreignKey: 'interest_id',
+});
+
+Interest.hasMany(User, {
+  foreignKey: 'interest_id',
   onDelete: 'SET NULL',
 });
 
-Interest.belongsTo(User, {
-  foreignKey: 'user_id',
+User.hasOne(InterestLevel, {
+  foreignKey: 'interest_level_id'
+});
+InterestLevel.belongsTo(User, {
+  foreignKey: 'interest_level_id'
 });
 
-module.exports = { User, Post, Like, Comment, Interest };
+
+module.exports = { User, Post, Like, Comment, Interest, InterestLevel };
