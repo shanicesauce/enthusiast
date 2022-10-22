@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
       'created_at'
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
     ],
-    // order: [['created_at', 'DESC']],
+    order: [['created_at', 'DESC']],
     include: [
       {
         model: Comment,
@@ -39,14 +39,6 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-  res.render('login');
-});
-
 router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -56,7 +48,7 @@ router.get('/post/:id', (req, res) => {
       'id',
       'post_text',
       'created_at'
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
+      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)''like_count',],
     ],
     include: [
       {
@@ -91,6 +83,23 @@ router.get('/post/:id', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
 });
 
 module.exports = router;
