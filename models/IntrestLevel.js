@@ -1,19 +1,19 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Interest extends Model {}
+class InterestLevel extends Model {}
 
-Interest.init(
+InterestLevel.init(
   {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    hobby: {
+    level: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: false
+      unique: false,
     },
   },
   {
@@ -21,8 +21,8 @@ Interest.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'interest'
+    modelName: 'interest_level',
   }
 );
 
-module.exports = Interest;
+module.exports = InterestLevel;
