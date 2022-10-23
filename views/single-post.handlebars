@@ -1,43 +1,57 @@
 {{!-- {{> post-info post }}  --}}
 <div class="card my-5">
-  <div class="card-header form-title">
-    <p>
-      <a class="card-header" href="/post/{{id}}">{{post_text}}</a>
-    </p>
-  </div>
+  <div class="card-header form-title"></div>
   <div class="card-body form-bg-custom">
-    <p>
-      {{post_text}}
-    </p>
+    <div>
+      {{post.post_text}}
+    </div>
     by
-    {{user.username}}
+    {{post.user.username}}
     on
-    {{format_date created_at}}
-    <a class="app-link" href="/post/{{id}}">{{comments.length}}
-      {{format_plural "comment" comments.length}}</a>
+    {{format_date post.created_at}}
+    <a class="app-link" href="/post/{{post.id}}">{{post.comments.length}}
+      {{format_plural "comment" post.comments.length}}</a>
   </div>
 </div>
 
 {{!-- {{#if loggedIn}}       --}}
-      <div class="card my-5">
-        <div class="card-body form-bg-custom">
-          <form class="comment-form">
-            <div class="form-group">
-              <textarea
-                class="form-control"
-                id="comment"
-                name="comment-body"
-                rows="3"
-              ></textarea>
-            </div>
-            <button class="btn btn-custom">Add Comment</button>
-          </form>
-        </div>
+<div class="card my-5">
+  <div class="card-body form-bg-custom">
+    <form class="comment-form">
+      <div class="form-group">
+        <textarea
+          class="form-control"
+          id="comment"
+          name="comment-body"
+          rows="3"
+        ></textarea>
       </div>
-      {{!-- {{/if}}  --}}
+      <button type="submit" class="btn btn-custom">Add Comment</button>
+    </form>
+  </div>
+</div>
+{{!-- {{/if}}  --}}
+
+{{!-- {{> comments post.comments}}  --}}
+<section class="comments">
+  {{#each post.comments}}
+    <div class="comment card mb-2">
+      <div class="card-header form-title">
+        {{user.username}}
+        on
+        {{format_date created_at}}
+      </div>
+      <div class="card-body form-bg-custom">
+        <div>
+        {{comment_text}}
+      </div>
+        
+      </div>
       
-      {{!-- {{> comments post.comments}}  --}}
-      
-      {{!-- {{#if loggedIn}} --}}
-      <script src="/javascript/comment.js"></script>
-      {{!-- {{/if}} --}}
+    </div>
+  {{/each}}
+</section>
+
+{{!-- {{#if loggedIn}} --}}
+<script src="/javascript/comment.js"></script>
+{{!-- {{/if}} --}}
