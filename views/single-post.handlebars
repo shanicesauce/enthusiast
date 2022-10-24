@@ -1,4 +1,11 @@
-{{> post-info post }}
+<a href="/post/{{post.id}}">
+  <div class="card mt-2">
+    <div class="card-header form-title"></div>
+    <div class="card-body form-bg-custom">
+      {{> post-info post }}
+    </div>
+  </div>
+</a>
 
 {{!-- {{#if loggedIn}}       --}}
 <div class="card my-3">

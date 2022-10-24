@@ -1,15 +1,9 @@
-<a href="/post/{{id}}"><div class="card mt-2">
-    <div class="card-header form-title">
-    </div>
-    <div class="card-body form-bg-custom">
-      <div>
-        {{post_text}}
-      </div>
-      by
-      {{user.username}}
-      on
-      {{format_date created_at}}
-      <a class="app-link" href="/post/{{id}}">{{comments.length}}
-        {{format_plural "comment" comments.length}}</a>
-    </div>
-  </div></a>
+<div>
+  {{post_text}}
+</div>
+by
+{{user.username}}
+on
+{{format_date created_at}}
+<a class="app-link" href="/post/{{id}}">{{comments.length}}
+  {{format_plural "comment" comments.length}}</a>

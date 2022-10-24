@@ -22,10 +22,16 @@
     <div>
       {{#each posts as |post|}}
         <li>
+          <a href="/post/{{id}}"><div class="card mt-2">
+            <div class="card-header form-title"></div>
+            <div class="card-body form-bg-custom">
            {{> post-info post}}
-           <button class="btn" id="edit-post-btn">
-            <a href="/dashboard/edit/{{id}}">Edit Post</a>            
-          </button>
+            <button class="btn" id="edit-post-btn">
+              <a href="/dashboard/edit/{{id}}">Edit Post</a>            
+            </button>
+            </div>
+            </div>
+          </a>
         </li>
       {{/each}}
     </div>
