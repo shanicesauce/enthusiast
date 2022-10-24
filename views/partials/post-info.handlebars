@@ -1,15 +1,36 @@
-<a href="/post/{{id}}"><div class="card my-5">
-    <div class="card-header form-title">
-    </div>
-    <div class="card-body form-bg-custom">
-      <div>
-        {{post_text}}
-      </div>
-      by
-      {{user.username}}
-      on
-      {{format_date created_at}}
-      <a class="app-link" href="/post/{{id}}">{{comments.length}}
-        {{format_plural "comment" comments.length}}</a>
-    </div>
-  </div></a>
+{{!-- <div class="card my-5">
+  <div class="card-header form-title">
+    <h2>
+      <a class="card-header" href="/post/{{id}}"></a>
+    </h2>
+  </div>
+  <div class="card-body form-bg-custom">
+    <p>
+      {{post_text}}
+    </p>
+    by
+    {{user.username}}
+    on
+    {{format_date created_at}}
+    <a class="app-link" href="/post/{{id}}">{{comments.length}}
+      {{format_plural "comment" comments.length}}</a>
+  </div>
+</div> --}}
+          <a href="/post/{{id}}"><div class="card my-5">
+              <div class="card-header form-title">
+              </div>
+              <div class="card-body form-bg-custom">
+                <div>
+                  {{post_text}}
+                </div>
+                by
+                {{user.username}}
+                on
+                {{format_date created_at}}
+                <a class="app-link" href="/post/{{id}}">{{comments.length}}
+                  {{format_plural "comment" comments.length}}</a>
+              </div>
+            </div></a>         
+          <button class="btn" id="edit-post-btn">
+            <a href="/dashboard/edit/{{id}}">Edit Post</a>            
+          </button>
