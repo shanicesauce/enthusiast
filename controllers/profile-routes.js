@@ -1,29 +1,33 @@
 const router = require('express').Router();
-const { User, Interest, InterestLevel } = require('../models');
+const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/profile/:id', withAuth, (req, res) => {
-  User.findByPk(req.params.id, {
+router.get('/', withAuth, (req, res) => {
+  User.findOne({
+    where: {
+      id: req.session.id,
+    },
     individualHooks: true,
     attributes: { exclude: ['password'] },
-    include: [
-      {
-        model: User,
-        attributes: ['name_first', 'name_last', 'email']
-      },
-      {
-        model: Interest,
-        attributes: ['hobby'],
-      },
-      {
-        model: InterestLevel,
-        attributes: ['id','level'] ,
-      }
-    ],
+    // include: [
+    //   {
+    //     model: User,
+    //     attributes: ['name_first', 'name_last', 'email']
+    //   },
+    //   {
+    //     model: Interest,
+    //     attributes: ['hobby'],
+    //   },
+    //   {
+    //     model: InterestLevel,
+    //     attributes: ['id','level'] ,
+    //   }
+    // ],
   })
     .then((dbUserData) => {
-      const user = dbUserData.map((user) => user.get({ plain: true }));
-      res.render('profile', { user, loggedIn: true });
+      // const users = dbUserData.map((user) => user.get({ plain: true }));
+      // res.render('profile', { users, loggedIn: true });
+      res.render('profile', dbUserData);
     })
     .catch((err) => {
       console.log(err);
