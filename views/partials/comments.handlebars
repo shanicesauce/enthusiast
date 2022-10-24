@@ -1,6 +1,6 @@
-<div class="comments">
+<section class="comments">
   {{#each this}}
-    <section class="comment card">
+    <div class="comment card mb-2">
       <div class="card-header form-title">
         {{user.username}}
         on
@@ -9,6 +9,6 @@
       <div class="card-body form-bg-custom">
         {{comment_text}}
       </div>
-    </section>
+    </div>
   {{/each}}
-</div>
+</section>

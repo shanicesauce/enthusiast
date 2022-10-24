@@ -96,7 +96,7 @@ router.get('/:id', (req, res) => {
 });
 
 //create post
-router.post('/',upload.single('image'),withAuth, (req, res) => {
+router.post('/', upload.single('image'), withAuth, (req, res) => {
   //expects { post_text: 'https://taskmaster.com/press', user_id: 1}
   console.log(JSON.stringify(req.file));
   Post.create({

@@ -1,10 +1,10 @@
-<div class="card my-5">
+<div class="card my-3">
   <h2 class="card-header form-title">Create New Post</h2>
   <div class="card-body form-bg-custom">
     <form id="new-post-form" name="new-post-form">
       <div class="form-group">
  <div>
- <h3>Upload Image</h3>
+ <h3 style="color: #218380">Upload Image</h3>
           <form method="POST" action="/api/posts" enctype="multipart/form-data">
           <input type="file" name="image">
           <textarea
@@ -23,14 +23,16 @@
 {{#if posts.length}}
  <section>
     <h2 class="section-title">Your Posts</h2>
-    <ol>
+    <div>
       {{#each posts as |post|}}
         <li>
            {{> post-info post}}
-
+           <button class="btn" id="edit-post-btn">
+            <a href="/dashboard/edit/{{id}}">Edit Post</a>            
+          </button>
         </li>
       {{/each}}
-    </ol>
+    </div>
   </section>
 {{/if}}
 
