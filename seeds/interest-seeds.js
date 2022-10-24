@@ -2,21 +2,24 @@ const { Interest } = require('../models');
 
 const interestData = [
   {
-    hobby: 'fashion',
-  },
-  {
     hobby: 'music',
   },
   {
-    hobby: 'tech',
+    hobby: 'travel',
   },
   {
     hobby: 'sports',
   },
   {
-    hobby: 'travel',
+    hobby: 'fashion',
+  },
+  {
+    hobby: 'tech',
 
   },
+  {
+    hobby: 'food'
+  }
 ];
 
 const seedinterest = () => Interest.bulkCreate(interestData);

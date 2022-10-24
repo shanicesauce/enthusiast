@@ -6,28 +6,28 @@ async function signupFormHandler(event) {
   const username = document.querySelector('#username-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
-  const hobby = document.querySelector('#hobby-signup').value;
-  const options = {
-    Music: {
-      value: '1',
-    },
-    Travel: {
-      value: '2',
-    },
-    Sports: {
-      value: '3',
-    },
-    Fashion: {
-      value: '4',
-    },
-    Tech: {
-      value: '5',
-    },
-    Food: {
-      value: '6',
-    }
-  };
-  options[hobby.value];
+  const interest = document.querySelector('#interest-signup').value;
+  // const options = {
+  //   Music: {
+  //     value: '1',
+  //   },
+  //   Travel: {
+  //     value: '2',
+  //   },
+  //   Sports: {
+  //     value: '3',
+  //   },
+  //   Fashion: {
+  //     value: '4',
+  //   },
+  //   Tech: {
+  //     value: '5',
+  //   },
+  //   Food: {
+  //     value: '6',
+  //   }
+  // };
+  // options[hobby.value];
 
   if (username && email && password) {
     const response = await fetch('/api/users', {
@@ -38,7 +38,7 @@ async function signupFormHandler(event) {
         username,
         email,
         password,
-        hobby
+        interest
       }),
       headers: { 'Content-Type': 'application/json' },
     });

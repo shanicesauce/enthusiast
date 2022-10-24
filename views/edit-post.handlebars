@@ -1,28 +1,30 @@
 <article>
+  <h5 class="app-link">
   <a href="/dashboard"> &larr; Back to dashboard</a>
+  </h5>
   <div class="card my-5">
     <h2 class="card-header form-title">
       Edit Post
     </h2>
     <div class="card-body form-bg-custom">
-      <form>
+      <form class="edit-post-form">
         <div class="form-group">
           <textarea
             type="text"
             class="form-control"
-            id="edit-post"
+            name="edit-post"
             rows="5"
-          >{{post.contents}}</textarea>
+          >{{post.post_text}}</textarea>
         </div>
         <div>
           by you on
           {{format_date post.created_at}}
           |
-          <a href="/post/{{post.id}}">{{post.comments.length}}
+          <a class="app-link" href="/post/{{post.id}}">{{post.comments.length}}
             {{format_plural "comment" post.comments.length}}</a>
         </div>
         <button class="btn btn-custom" type="submit">Save post</button>
-        <button type="button" class="btn" id="delete-post-btn">Delete post</button>
+        <button class="btn" type="button" id="delete-post-btn">Delete post</button>
       </form>
     </div>
   </div>
@@ -30,4 +32,4 @@
 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>
-<script src="/javascript/comment.js"></script>
+{{!-- <script src="/javascript/comment.js"></script> --}}

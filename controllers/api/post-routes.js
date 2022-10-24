@@ -1,20 +1,20 @@
 const router = require('express').Router();
-const { Post, User, Like, Comment, Interest, InterestLevel } = require('../../models');
+const { Post, User, Like, Comment, Interest } = require('../../models');
 // const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
-const multer = require('multer');
+// const multer = require('multer');
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'Images')
-  },
-  filename: (req, file, cb) => {
-    console.log(file)
-    cb(null, Date.now() + path.extname(file.originalname))
-  }
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'Images');
+//   },
+//   filename: (req, file, cb) => {
+//     console.log(file);
+//     cb(null, Date.now() + path.extname(file.originalname));
+//   }
+// });
 
-const upload = multer({storage: storage});
+// const upload = multer({storage: storage});
 
 router.get('/', (req, res) => {
   Post.findAll({
@@ -38,18 +38,10 @@ router.get('/', (req, res) => {
       {
         model: User,
         attributes: ['username'],
-        include: {
-          model: InterestLevel,
-          attributes: ['id', 'level']
-        },
         include:{
           model: Interest,
           attributes: ['id','hobby'],
-        },
-        include:{
-          model: InterestLevel,
-          attributes: ['id','level'],
-        },
+        }
       },
     ],
   })
@@ -104,19 +96,21 @@ router.get('/:id', (req, res) => {
 });
 
 //create post
-router.post('/', upload.single('image'), withAuth, (req, res) => {
+router.post('/',
+// upload.single('image'),
+  withAuth, (req, res) => {
   //expects { post_text: 'https://taskmaster.com/press', user_id: 1}
-  Post.create({
-    image: req.body.image,
-    post_text: req.body.post_text,
-    user_id: req.session.user_id,
-  })
-    .then((dbPostData) => res.json(dbPostData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+    Post.create({
+      image: req.body.image,
+      post_text: req.body.post_text,
+      user_id: req.session.user_id,
+    })
+      .then((dbPostData) => res.json(dbPostData))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 //put api/posts/uplike
 router.put('/uplike', withAuth, (req, res) => {
