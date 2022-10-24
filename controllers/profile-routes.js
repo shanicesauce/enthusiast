@@ -2,6 +2,10 @@ const router = require('express').Router();
 const { User, Interest, InterestLevel } = require('../models');
 const withAuth = require('../utils/auth');
 
+router.get('/profile', (req, res) => {
+  res.render('profile');
+});
+
 router.get('/profile/:id', withAuth, (req, res) => {
   User.findByPk(req.params.id, {
     individualHooks: true,

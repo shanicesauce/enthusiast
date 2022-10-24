@@ -1,5 +1,5 @@
-{{!-- {{> post-info post }}  --}}
-<div class="card my-5">
+{{> post-info post }} 
+{{!-- <div class="card my-5">
   <div class="card-header form-title"></div>
   <div class="card-body form-bg-custom">
     <div>
@@ -12,7 +12,7 @@
     <a class="app-link" href="/post/{{post.id}}">{{post.comments.length}}
       {{format_plural "comment" post.comments.length}}</a>
   </div>
-</div>
+</div> --}}
 
 {{!-- {{#if loggedIn}}       --}}
 <div class="card my-5">
@@ -32,8 +32,8 @@
 </div>
 {{!-- {{/if}}  --}}
 
-{{!-- {{> comments post.comments}}  --}}
-<section class="comments">
+{{> comments post.comments}} 
+{{!-- <section class="comments">
   {{#each post.comments}}
     <div class="comment card mb-2">
       <div class="card-header form-title">
@@ -50,7 +50,7 @@
       
     </div>
   {{/each}}
-</section>
+</section> --}}
 
 {{!-- {{#if loggedIn}} --}}
 <script src="/javascript/comment.js"></script>
