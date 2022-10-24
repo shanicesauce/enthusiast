@@ -1,47 +1,47 @@
-const router = require('express').Router();
-const { Post, User, Like, Comment, Interest } = require('../../models');
+const router = require("express").Router();
+const { Post, User, Like, Comment, Interest } = require("../../models");
 // const sequelize = require('../../config/connection');
-const withAuth = require('../../utils/auth');
-// const multer = require('multer');
+const withAuth = require("../../utils/auth");
+const multer = require("multer");
 
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'Images');
-//   },
-//   filename: (req, file, cb) => {
-//     console.log(file);
-//     cb(null, Date.now() + path.extname(file.originalname));
-//   }
-// });
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./Images");
+  },
+  filename: (req, file, cb) => {
+    console.log(file);
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
 
-// const upload = multer({storage: storage});
+const upload = multer({ storage: storage });
 
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   Post.findAll({
     attributes: [
-      'id',
-      'image',
-      'post_text',
-      'created_at'
+      "id",
+      "image",
+      "post_text",
+      "created_at",
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
     ],
-    order: [['created_at', 'DESC']],
+    order: [["created_at", "DESC"]],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ['username'],
+          attributes: ["username"],
         },
       },
       {
         model: User,
-        attributes: ['username'],
-        include:{
+        attributes: ["username"],
+        include: {
           model: Interest,
-          attributes: ['id','hobby'],
-        }
+          attributes: ["id", "hobby"],
+        },
       },
     ],
   })
@@ -51,40 +51,40 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-router.get('/:id', (req, res) => {
+router.get("/:id", (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id,
     },
     attributes: [
-      'id',
-      'image',
-      'post_text',
-      'created_at'
+      "id",
+      "image",
+      "post_text",
+      "created_at",
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ['username'],
+          attributes: ["username"],
         },
       },
       {
         model: User,
-        attributes: ['username'],
-        include:{
+        attributes: ["username"],
+        include: {
           model: Interest,
-          attributes: ['id','hobby'],
+          attributes: ["id", "hobby"],
         },
       },
     ],
   })
     .then((dbPostData) => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+        res.status(404).json({ message: "No post found with this id" });
         return;
       }
       res.json(dbPostData);
@@ -96,24 +96,23 @@ router.get('/:id', (req, res) => {
 });
 
 //create post
-router.post('/',
-// upload.single('image'),
-  withAuth, (req, res) => {
+router.post("/", upload.single("image"), withAuth, (req, res) => {
   //expects { post_text: 'https://taskmaster.com/press', user_id: 1}
-    Post.create({
-      image: req.body.image,
-      post_text: req.body.post_text,
-      user_id: req.session.user_id,
-    })
-      .then((dbPostData) => res.json(dbPostData))
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+  console.log(JSON.stringify(req.file));
+  Post.create({
+    image: req.body.image,
+    post_text: req.body.post_text,
+    user_id: req.session.user_id,
+  })
+    .then((dbPostData) => res.json(dbPostData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 //put api/posts/uplike
-router.put('/uplike', withAuth, (req, res) => {
+router.put("/uplike", withAuth, (req, res) => {
   if (req.session) {
     Post.uplike(
       { ...req.body, user_id: req.session.user_id },
@@ -128,17 +127,15 @@ router.put('/uplike', withAuth, (req, res) => {
 });
 
 //update existing entry
-router.put('/:id', withAuth, (req, res) => {
-  Post.update(
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  )
+router.put("/:id", withAuth, (req, res) => {
+  Post.update({
+    where: {
+      id: req.params.id,
+    },
+  })
     .then((dbPostData) => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+        res.status(404).json({ message: "No post found with this id" });
         return;
       }
       res.json(dbPostData);
@@ -150,7 +147,7 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 //delete post
-router.delete('/:id', withAuth, (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Post.destroy({
     where: {
       id: req.params.id,
@@ -158,7 +155,7 @@ router.delete('/:id', withAuth, (req, res) => {
   })
     .then((dbPostData) => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+        res.status(404).json({ message: "No post found with this id" });
         return;
       }
       res.json(dbPostData);
