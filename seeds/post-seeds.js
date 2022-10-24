@@ -2,7 +2,7 @@ const { Post } = require('../models');
 
 const postData = [
   {
-    post_text: 'making all this money walking shows',
+    post_text: 'fashion,fashion,fashion',
     user_id: 1,
   },
   {
@@ -14,11 +14,11 @@ const postData = [
     user_id: 2,
   },
   {
-    post_text: 'idk another team to insult so whatever',
+    post_text: 'lets go chiefs',
     user_id: 4,
   },
   {
-    post_text: 'maldives here i come',
+    post_text: 'travel,work,sleep,repeat',
     user_id: 5,
   },
 

@@ -1,21 +1,7 @@
-{{!-- {{> post-info post }}  --}}
-<div class="card my-5">
-  <div class="card-header form-title"></div>
-  <div class="card-body form-bg-custom">
-    <div>
-      {{post.post_text}}
-    </div>
-    by
-    {{post.user.username}}
-    on
-    {{format_date post.created_at}}
-    <a class="app-link" href="/post/{{post.id}}">{{post.comments.length}}
-      {{format_plural "comment" post.comments.length}}</a>
-  </div>
-</div>
+{{> post-info post }}
 
 {{!-- {{#if loggedIn}}       --}}
-<div class="card my-5">
+<div class="card my-3">
   <div class="card-body form-bg-custom">
     <form class="comment-form">
       <div class="form-group">
@@ -32,25 +18,7 @@
 </div>
 {{!-- {{/if}}  --}}
 
-{{!-- {{> comments post.comments}}  --}}
-<section class="comments">
-  {{#each post.comments}}
-    <div class="comment card mb-2">
-      <div class="card-header form-title">
-        {{user.username}}
-        on
-        {{format_date created_at}}
-      </div>
-      <div class="card-body form-bg-custom">
-        <div>
-        {{comment_text}}
-      </div>
-        
-      </div>
-      
-    </div>
-  {{/each}}
-</section>
+{{> comments post.comments}} 
 
 {{!-- {{#if loggedIn}} --}}
 <script src="/javascript/comment.js"></script>

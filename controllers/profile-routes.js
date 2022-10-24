@@ -1,19 +1,16 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User,
+  // Interest, InterestLevel
+} = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
   User.findOne({
     where: {
-      id: req.session.id,
+      id: req.session.user_id,
     },
-    individualHooks: true,
-    attributes: { exclude: ['password'] },
+    attributes: { exclude: ['password'] }
     // include: [
-    //   {
-    //     model: User,
-    //     attributes: ['name_first', 'name_last', 'email']
-    //   },
     //   {
     //     model: Interest,
     //     attributes: ['hobby'],
@@ -24,10 +21,11 @@ router.get('/', withAuth, (req, res) => {
     //   }
     // ],
   })
-    .then((dbUserData) => {
-      // const users = dbUserData.map((user) => user.get({ plain: true }));
-      // res.render('profile', { users, loggedIn: true });
-      res.render('profile', dbUserData);
+    .then((liUserData) => {
+      const user = liUserData.dataValues;
+      // const arrayData = Object.keys(data);
+      // const users = data.map((user) => user.get({ plain: true }));
+      res.render('profile', { user , loggedIn: true});
     })
     .catch((err) => {
       console.log(err);
