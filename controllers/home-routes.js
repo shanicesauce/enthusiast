@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
       'created_at'
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
     ],
-    order: [['created_at', 'DESC']],
+    order: [['created_at']],
     include: [
       {
         model: Comment,
