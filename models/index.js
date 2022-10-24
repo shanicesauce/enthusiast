@@ -77,6 +77,16 @@ Interest.hasMany(User, {
   onDelete: 'SET NULL',
 });
 
+// Post.belongsTo(Interest, {
+//   through: User,
+//   foreignKey: 'interest_id'
+// });
+
+// Interest.hasMany(Post, {
+//   through: User,
+//   foreignKey: 'interest_id'
+// });
+
 User.hasOne(InterestLevel, {
   foreignKey: 'interest_level_id'
 });
