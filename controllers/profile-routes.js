@@ -2,20 +2,11 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
-<<<<<<< HEAD
-router.get('/profile', (req, res) => {
-  res.render('profile');
-});
-
-router.get('/profile/:id', withAuth, (req, res) => {
-  User.findByPk(req.params.id, {
-=======
 router.get('/', withAuth, (req, res) => {
   User.findOne({
     where: {
       id: req.session.id,
     },
->>>>>>> 114f835ab3d6508c513eb3ae7e6ad7e26a157556
     individualHooks: true,
     attributes: { exclude: ['password'] },
     // include: [

@@ -9,32 +9,32 @@
     <title>Enthusiast</title>
   </head>
   <body class="bg-custom">    
-    <nav class="navbar navbar-custom navbar-expand-xs justify-space-between">
+    <nav class="navbar navbar-custom navbar-expand-xs justify-space-between mb-3">
         <a class="navbar-brand" href="/">
             <i class="fa-solid fa-icons fa-lg" style="color: #218380"></i> 
-            <h1 class="d-inline-block align-top" style="color: #218380 ">Enthusiast</h1>
+            <h1 class="d-inline-block align-top" style="color: #218380">Enthusiast</h1>
         </a>        
         <a class="nav item" href="/">
-            <h2 class="d-inline-block align-top" style="color: #218380 "> Home</h2>
+            <h2 class="d-inline-block align-top" style="color: #218380"> Home</h2>
         </a>
         <a class="nav item" href="/dashboard">
-            <h2 class="d-inline-block align-top" style="color: #218380 "> Dashboard</h2>
+            <h2 class="d-inline-block align-top" style="color: #218380"> Dashboard</h2>
         </a>
         <a class="nav item" href="/profile">
-            <h2 class="d-inline-block align-top" style="color: #218380 "> Profile</h2>
+            <h2 class="d-inline-block align-top" style="color: #218380"> Profile</h2>
         </a>
-        <!-- {{#if loggedIn}} -->
+       {{#if loggedIn}}
         <button type="button" class="nav-item btn btn-link" id="logout">
-            <h2 class="d-inline-block align-top" style="color: #218380 "> Logout</h2>
+            <h2 class="d-inline-block align-top" style="color: #218380"> Logout</h2>
         </button>  
-        <!-- {{else}} -->
+        {{else}}
         <a class="nav item" href="/login">
-            <h2 class="d-inline-block align-top" style="color: #218380 "> Login</h2>
+            <h2 class="d-inline-block align-top" style="color: #218380"> Login</h2>
         </a>
         <a class="nav item" href="/signup">
-            <h2 class="d-inline-block align-top" style="color: #218380 "> Sign Up</h2>
+            <h2 class="d-inline-block align-top" style="color: #218380"> Sign Up</h2>
         </a>
-        <!-- {{/if}} -->
+       {{/if}}
     </nav>
     <main>
         {{{body}}}
