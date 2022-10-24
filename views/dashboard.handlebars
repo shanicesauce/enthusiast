@@ -1,17 +1,17 @@
 <div class="card my-5">
   <h2 class="card-header form-title">Create New Post</h2>
   <div class="card-body form-bg-custom">
-    <form id="new-post-form" name="">
+    <form id="new-post-form" name="new-post-form">
       <div class="form-group">
         <div>
-          <h3>Upload Image</h3>
+          {{!-- <h3>Upload Image</h3>
           <form method="POST" action="/upload" enctype="multipart/form-data"></form>
-          <input type="file" name="image">
+          <input type="file" name="image"> --}}
           <textarea
             class="form-control"
             rows="5"
             id="post-text"
-            name="post-text"
+            name="post_text"
           ></textarea>
         </div>
       </div>
@@ -26,13 +26,14 @@
     <ol>
       {{#each posts as |post|}}
         <li>
+           {{!-- {{> post-info post}} --}}
           <a href="/post/{{id}}"><div class="card my-5">
               <div class="card-header form-title">
               </div>
               <div class="card-body form-bg-custom">
-                <p>
+                <div>
                   {{post_text}}
-                </p>
+                </div>
                 by
                 {{user.username}}
                 on
@@ -40,14 +41,9 @@
                 <a class="app-link" href="/post/{{id}}">{{comments.length}}
                   {{format_plural "comment" comments.length}}</a>
               </div>
-            </div></a>
-          {{!-- {{> post-info post}} --}}
-          <button
-            href="/dashboard/edit/{{post.id}}"
-            class="btn"
-            id="edit-post-btn"
-          >
-            Edit Post
+            </div></a>         
+          <button class="btn" id="edit-post-btn">
+            <a href="/dashboard/edit/{{id}}">Edit Post</a>            
           </button>
         </li>
       {{/each}}
