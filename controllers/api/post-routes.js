@@ -131,6 +131,9 @@ router.put('/uplike', withAuth, (req, res) => {
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {
+      post_text: req.body.post_text,
+    },
+    {
       where: {
         id: req.params.id,
       },
