@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { Post, User, Like, Comment, Interest } = require("../../models");
-// const sequelize = require('../../config/connection');
+const sequelize = require('../../config/connection');
 const withAuth = require("../../utils/auth");
 const multer = require("multer");
+// const image = require("../../public/javascript/add-post");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -100,7 +101,7 @@ router.post("/", upload.single("image"), withAuth, (req, res) => {
   //expects { post_text: 'https://taskmaster.com/press', user_id: 1}
   console.log(JSON.stringify(req.file));
   Post.create({
-    image: req.body.image,
+    image: req.body.file,
     post_text: req.body.post_text,
     user_id: req.session.user_id,
   })
