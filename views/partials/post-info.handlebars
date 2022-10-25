@@ -1,16 +1,23 @@
 <div>
+  {{#if image}}
   <img  width="200" src="/Images/{{image}}" />
-
+  {{/if}}
   {{post_text}}
   
 
+<<<<<<< HEAD
 </div>
+=======
+</div class="meta">
+{{!-- {{#if love_count}} --}}
+{{love_count}} 
+
+{{!-- {{format_plural "love" love_count.length}} --}}
+{{!-- {{/if}} --}}
+>>>>>>> e5de6014c02d9430f200baf40e6f753c26bc5964
 by
 {{user.username}}
 on
 {{format_date created_at}}
 <a class="app-link" href="/post/{{id}}">{{comments.length}}
   {{format_plural "comment" comments.length}}</a>
-
-  {{!-- id="HideImg"
-  onerror="hideImg()" --}}
