@@ -3,7 +3,7 @@ const { Post, User, Like, Comment, Interest } = require('../../models');
 // const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 const multer = require('multer');
-const path = require('path');
+
 
 
 const storage = multer.diskStorage({
@@ -12,8 +12,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     console.log(file);
-    debugger
-    cb(null, `${Date.now()}-${file.originalname}`); 
+    cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
 
@@ -105,13 +104,12 @@ router.get('/:id', (req, res) => {
 router.post('/', upload.single('image'), withAuth, (req, res) => {
   //expects { post_text: 'https://taskmaster.com/press', user_id: 1}
   console.log(JSON.stringify(req.file));
-  debugger
   Post.create({
     image: req.file.filename,
     post_text: req.body.post_text,
     user_id: req.session.user_id,
   })
-    .then((dbPostData) => res.redirect("/dashboard"))
+    .then((dbPostData) => res.redirect('/dashboard', dbPostData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
