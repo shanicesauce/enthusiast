@@ -43,7 +43,7 @@ Post.init(
       autoIncrement: true
     },
     image: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
       allowNull: true
     },
     post_text: {
