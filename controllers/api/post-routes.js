@@ -23,15 +23,15 @@ router.get('/', (req, res) => {
       'image',
       'post_text',
       'created_at',
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
+      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at',],
         include: {
           model: User,
-          attributes: ['username'],
+          attributes: ['username']
         },
       },
       {
@@ -60,7 +60,7 @@ router.get('/:id', (req, res) => {
       'image',
       'post_text',
       'created_at',
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
+      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {
@@ -68,8 +68,8 @@ router.get('/:id', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username'],
-        },
+          attributes: ['username']
+        }
       },
       {
         model: User,

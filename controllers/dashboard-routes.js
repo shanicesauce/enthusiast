@@ -11,10 +11,10 @@ router.get('/', withAuth, (req, res) => {
     },
     attributes: [
       'id',
-      // 'image',
+      'image',
       'post_text',
-      'created_at'
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
+      'created_at',
+      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count']
     ],
     include: [
       {
@@ -22,14 +22,14 @@ router.get('/', withAuth, (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username'],
-        },
+          attributes: ['username']
+        }
       },
       {
         model: User,
-        attributes: ['username'],
-      },
-    ],
+        attributes: ['username']
+      }
+    ]
   })
     .then((dbPostData) => {
       //serialize data before passing to template
@@ -46,10 +46,10 @@ router.get('/edit/:id', withAuth, (req, res) => {
   Post.findByPk(req.params.id, {
     attributes: [
       'id',
-      // 'image',
+      'image',
       'post_text',
-      'created_at'
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count',],
+      'created_at',
+      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count']
     ],
     include: [
       {
@@ -57,14 +57,14 @@ router.get('/edit/:id', withAuth, (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username'],
-        },
+          attributes: ['username']
+        }
       },
       {
         model: User,
-        attributes: ['username'],
-      },
-    ],
+        attributes: ['username']
+      }
+    ]
   })
     .then((dbPostData) => {
       if (!dbPostData) {
