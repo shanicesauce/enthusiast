@@ -4,15 +4,11 @@
   {{post_text}}
   
 
-</div class="meta">
-{{!-- {{#if love_count}} --}}
-{{love_count}} {{format_plural "love" love_count}}
-{{!-- {{/if}} --}}
+</div>
 by
 {{user.username}}
 on
 {{format_date created_at}}
-|
 <a class="app-link" href="/post/{{id}}">{{comments.length}}
   {{format_plural "comment" comments.length}}</a>
 
