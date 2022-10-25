@@ -1,9 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 async function newFormHandler(event) {
   event.preventDefault();
 
   const post_text = document.querySelector('textarea[name="post_text"]').value;
   const image = document.querySelector('input[name="image"]');
-  debugger
+  // const img = document.getElementById('img');
+  // img.setAttribute('src', '');
   const response = await fetch('/api/posts', {
     method: 'POST',
     body: JSON.stringify({
@@ -16,7 +18,6 @@ async function newFormHandler(event) {
   });
 
   if (response.ok) {
-    debugger
     document.location.replace('/dashboard');
   } else {
     alert(response.statusText);

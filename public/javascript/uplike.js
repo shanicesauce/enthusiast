@@ -21,4 +21,4 @@ async function uplikeClickHandler(event) {
   }
 }
 
-document.querySelector('.uplike-btn').addEventListener('click', uplikeClickHandler);
+document.querySelector('#like-btn').addEventListener('click', uplikeClickHandler);

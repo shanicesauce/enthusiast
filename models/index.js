@@ -19,7 +19,6 @@ Post.belongsTo(User, {
 User.belongsToMany(Post, {
   through: Like,
   as: 'liked_posts',
-
   foreignKey: 'user_id',
   onDelete: 'SET NULL',
 });

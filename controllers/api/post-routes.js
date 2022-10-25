@@ -3,7 +3,7 @@ const { Post, User, Like, Comment, Interest } = require('../../models');
 // const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 const multer = require('multer');
-
+// const path = require('path');
 
 
 const storage = multer.diskStorage({
@@ -11,7 +11,6 @@ const storage = multer.diskStorage({
     cb(null, './public/Images');
   },
   filename: (req, file, cb) => {
-    console.log(file);
     cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
@@ -109,7 +108,8 @@ router.post('/', upload.single('image'), withAuth, (req, res) => {
     post_text: req.body.post_text,
     user_id: req.session.user_id,
   })
-    .then((dbPostData) => res.redirect('/dashboard', dbPostData))
+    // eslint-disable-next-line no-unused-vars
+    .then((dbPostData) => res.redirect('/dashboard'))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);

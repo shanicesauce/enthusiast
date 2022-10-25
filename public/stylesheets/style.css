@@ -19,6 +19,13 @@
     background-color: #2d3047;
     color: #ef6ba9;
   }
+  #like-btn {
+    background-color: transparent;
+    color: #ef6ba9
+  }
+  #like-btn:hover {
+    color: #2D3047
+  }
   .section-title {
     color: #ef6ba9;
   }
@@ -44,3 +51,6 @@
   .app-link {
     color: #218380;
   }
+  /* #img img[src="/Images/{{''}}"] {
+    display: none;
+  } */
