@@ -1,15 +1,13 @@
-async function editFormHandler(event) {
+async function uplikeClickHandler(event) {
   event.preventDefault();
-
-  const post_text = document.querySelector('textarea[name=edit-post]').value.trim();
 
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
-  const response = await fetch(`/api/posts/${id}`, {
+  const response = await fetch('/api/posts/uplike', {
     method: 'PUT',
     body: JSON.stringify({
-      post_text
+      post_id: id
     }),
     headers: {
       'Content-Type': 'application/json'
@@ -17,11 +15,10 @@ async function editFormHandler(event) {
   });
 
   if (response.ok) {
-    document.location.replace('/dashboard/');
+    document.location.reload();
   } else {
     alert(response.statusText);
   }
-
 }
 
-document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
+document.querySelector('#like-btn').addEventListener('click', uplikeClickHandler);

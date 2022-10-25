@@ -1,0 +1,33 @@
+<a href="/post/{{post.id}}">
+  <div class="card mt-2">
+    <div class="card-header form-title"></div>
+    <div class="card-body form-bg-custom">
+      {{> post-info post }}
+    </div>
+  </div>
+</a>
+
+{{!-- {{#if loggedIn}}       --}}
+<div class="card my-3">
+  <div class="card-body form-bg-custom">
+    <form class="comment-form">
+      <div class="form-group">
+        <textarea
+          class="form-control"
+          id="comment"
+          name="comment-body"
+          rows="3"
+        ></textarea>
+      </div>
+      <button type="button" class="btn" id="like-btn"><i class="fa-solid fa-heart fa-2x"></i></button>
+      <button type="submit" class="btn btn-custom">Add Comment</button>
+    </form>
+  </div>
+</div>
+{{!-- {{/if}}  --}}
+
+{{> comments post.comments}} 
+
+{{!-- {{#if loggedIn}} --}}
+<script src="/javascript/comment.js"></script>
+{{!-- {{/if}} --}}

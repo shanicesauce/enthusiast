@@ -1,0 +1,16 @@
+<div>
+  
+  <img  width="200" src="/Images/{{image}}" />
+  {{post_text}}
+  
+
+</div>
+by
+{{user.username}}
+on
+{{format_date created_at}}
+<a class="app-link" href="/post/{{id}}">{{comments.length}}
+  {{format_plural "comment" comments.length}}</a>
+
+  {{!-- id="HideImg"
+  onerror="hideImg()" --}}

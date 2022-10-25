@@ -1,0 +1,41 @@
+<div class="card my-3">
+  <h2 class="card-header form-title">Create New Post</h2>
+  <div class="card-body form-bg-custom">
+    <form id="new-post-form" name="new-post-form" method="POST" action="/api/posts" enctype="multipart/form-data">
+      <div class="form-group">
+          <h3 style="color: #218380">Upload Image</h3>
+          <input type="file" name="image">
+          <textarea
+            class="form-control"
+            rows="5"
+            id="post-text"
+            name="post_text"
+          ></textarea>
+      </div>
+      <button type="submit" class="btn btn-custom" value="Upload">Submit Post</button>
+  </div>
+</div>
+
+{{#if posts.length}}
+ <section>
+    <h2 class="section-title">Your Posts</h2>
+    <div>
+      {{#each posts as |post|}}
+        <li>
+          <a href="/post/{{id}}"><div class="card mt-2">
+            <div class="card-header form-title"></div>
+            <div class="card-body form-bg-custom">
+           {{> post-info post}}
+            <button class="btn" id="edit-post-btn">
+              <a href="/dashboard/edit/{{id}}">Edit Post</a>            
+            </button>
+            </div>
+            </div>
+          </a>
+        </li>
+      {{/each}}
+    </div>
+  </section>
+{{/if}}
+
+<script src="/javascript/add-post.js"></script>

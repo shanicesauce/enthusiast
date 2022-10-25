@@ -1,0 +1,29 @@
+<section class="post-list">
+    <div class="row">        
+    <h2 class="section-title col-md-4 mt-4 ml-3 mb-0">Stuff You'll Love</h2>
+    <div class="form-group col-md-4">
+          <label for="interestInput" class="section-title mt-1">Choose An Interest</label>
+          <select class="form-control" id="interest-signup">
+            <option selected>Choose...</option>
+            <option value="1">Music</option>
+            <option value="2">Travel</option>
+            <option value="3">Sports</option>
+            <option value="4">Fashion</option>
+            <option value="5">Tech</option>
+            <option value="6">Food</option>
+          </select>
+        </div>
+        </div>
+    {{#each posts as |post|}}
+        <li>
+            <a href="/post/{{id}}">
+                <div class="card mt-2">
+                    <div class="card-header form-title"></div>
+                    <div class="card-body form-bg-custom">
+                    {{> post-info post }}
+                    </div>
+                </div>
+            </a>    
+        </li>
+    {{/each}}
+</section>

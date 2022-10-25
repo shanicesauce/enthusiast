@@ -1,0 +1,87 @@
+<div class="card my-5">
+  <div class="card-header form-title">
+    <h3>Create Your Profile</h3>
+  </div>
+  <div class="card-body form-bg-custom">
+    <form class="signup-form">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name_first">First Name</label>
+          <input type="text" class="form-control" id="name_first-signup" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="name_last">Last Name</label>
+          <input type="text" class="form-control" id="name_last-signup" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="emailInput">Email</label>
+          <input type="email" class="form-control" id="email-signup" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="passwordInput">Password</label>
+          <input type="password" class="form-control" id="password-signup" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="usernameInput">Username</label>
+          <input type="text" class="form-control" id="username-signup" />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="interestInput">Choose An Interest</label>
+          <select class="form-control" id="interest-signup">
+            <option selected>Choose...</option>
+            <option value="1">Music</option>
+            <option value="2">Travel</option>
+            <option value="3">Sports</option>
+            <option value="4">Fashion</option>
+            <option value="5">Tech</option>
+            <option value="6">Food</option>
+          </select>
+        </div>
+        <fieldset class="form-group">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gridRadios"
+              id="gridRadios1"
+              value="option1"
+            />
+            <label class="form-check-label" for="gridRadios1">
+              Hobby
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gridRadios"
+              id="gridRadios2"
+              value="option2"
+            />
+            <label class="form-check-label" for="gridRadios2">
+              Amateur
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gridRadios"
+              id="gridRadios3"
+              value="option3"
+            />
+            <label class="form-check-label" for="gridRadios3">
+              Professional
+            </label>
+          </div>
+        </fieldset>
+      </div>
+      <button type="submit" class="btn btn-custom">Sign Up!</button>
+      <a type="button" class="app-link" href="/login">Login instead</a>
+    </form>
+  </div>
+</div>
+
+<script src="/javascript/signup.js"></script>
