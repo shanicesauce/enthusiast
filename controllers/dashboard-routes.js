@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const sequelize = require('../config/connection');
+const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
@@ -14,7 +14,7 @@ router.get('/', withAuth, (req, res) => {
       'image',
       'post_text',
       'created_at',
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM love WHERE post.id = love.post_id)'), 'loves'],
     ],
     order: [['created_at', 'DESC']],
     include: [
@@ -23,14 +23,14 @@ router.get('/', withAuth, (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
-        }
+          attributes: ['username'],
+        },
       },
       {
         model: User,
-        attributes: ['username']
-      }
-    ]
+        attributes: ['username'],
+      },
+    ],
   })
     .then((dbPostData) => {
       //serialize data before passing to template
@@ -50,7 +50,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
       'image',
       'post_text',
       'created_at',
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'),'like_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM love WHERE post.id = love.post_id)'), 'love_count'],
     ],
     include: [
       {
@@ -58,14 +58,14 @@ router.get('/edit/:id', withAuth, (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
-        }
+          attributes: ['username'],
+        },
       },
       {
         model: User,
-        attributes: ['username']
-      }
-    ]
+        attributes: ['username'],
+      },
+    ],
   })
     .then((dbPostData) => {
       if (!dbPostData) {
