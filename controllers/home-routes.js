@@ -4,9 +4,9 @@ const { Post, User, Comment} = require('../models');
 
 router.get('/', (req, res) => {
   Post.findAll({
-    where: {
-      interest_id : req.session.interest_id
-    },
+    // where: {
+    //   interest_id : req.session.interest_id
+    // },
     attributes: [
       'id',
       'image',
