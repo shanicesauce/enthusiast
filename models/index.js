@@ -68,13 +68,13 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id',
 });
 
-User.belongsTo(Interest, {
-  foreignKey: 'interest_id',
-});
+// User.belongsTo(Interest, {
+//   foreignKey: 'interest_id',
+// });
 
 Interest.hasMany(User, {
   foreignKey: 'interest_id',
-  onDelete: 'SET NULL',
+  // onDelete: 'SET NULL',
 });
 
 Post.belongsTo(Interest, {

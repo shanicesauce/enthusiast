@@ -3,7 +3,7 @@ async function newFormHandler(event) {
 
   const post_text = document.querySelector('textarea[name="post_text"]').value;
   const image = document.querySelector('input[name="image"]').value;
-
+  debugger
   const response = await fetch('/api/posts', {
     method: 'POST',
     body: JSON.stringify({
@@ -16,6 +16,7 @@ async function newFormHandler(event) {
   });
 
   if (response.ok) {
+    debugger
     document.location.replace('/dashboard');
   } else {
     alert(response.statusText);

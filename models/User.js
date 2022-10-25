@@ -43,6 +43,7 @@ User.init(
     },
     interest_id: {
       type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
         model: 'interest',
         key: 'id'
