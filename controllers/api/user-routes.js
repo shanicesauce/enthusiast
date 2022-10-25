@@ -111,6 +111,7 @@ router.post('/login', (req, res) => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
+      req.session.interest_id = dbUserData.interest_id;
 
       res.json({ user: dbUserData, message: 'Welcome to the site!' });
     });
