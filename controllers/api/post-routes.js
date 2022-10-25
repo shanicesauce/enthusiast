@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const { Post, User, Like, Comment, Interest } = require('../../models');
-// const sequelize = require('../../config/connection');
+const { Post, User, Love, Comment, Interest } = require('../../models');
+const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 const multer = require('multer');
 // const path = require('path');
-
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -24,16 +23,16 @@ router.get('/', (req, res) => {
       'image',
       'post_text',
       'created_at',
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM love WHERE post.id = love.post_id)'), 'love_count']
     ],
     order: [['created_at', 'DESC']],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at',],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['username'],
         },
       },
       {
@@ -62,7 +61,7 @@ router.get('/:id', (req, res) => {
       'image',
       'post_text',
       'created_at',
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM love WHERE post.id = love.post_id)'), 'love_count'],
     ],
     include: [
       {
@@ -70,12 +69,12 @@ router.get('/:id', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
-        }
+          attributes: ['username'],
+        },
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: ['username'],
         // include: {
         //   model: Interest,
         //   attributes: ['id', 'hobby'],
@@ -113,14 +112,14 @@ router.post('/', upload.single('image'), withAuth, (req, res) => {
     });
 });
 
-//put api/posts/uplike
-router.put('/uplike', withAuth, (req, res) => {
+//put api/posts/uplove
+router.put('/uplove', withAuth, (req, res) => {
   if (req.session) {
-    Post.uplike(
+    Post.uplove(
       { ...req.body, user_id: req.session.user_id },
-      { Like, Comment, User }
+      { Love, Comment, User }
     )
-      .then((updatedLikeData) => res.json(updatedLikeData))
+      .then((updatedloveData) => res.json(updatedloveData))
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);

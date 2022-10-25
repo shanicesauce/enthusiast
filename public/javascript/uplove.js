@@ -1,17 +1,17 @@
-async function uplikeClickHandler(event) {
+async function uploveClickHandler(event) {
   event.preventDefault();
 
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
-  const response = await fetch('/api/posts/uplike', {
+  const response = await fetch('/api/posts/uplove', {
     method: 'PUT',
     body: JSON.stringify({
-      post_id: id
+      post_id: id,
     }),
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   });
 
   if (response.ok) {
@@ -21,4 +21,4 @@ async function uplikeClickHandler(event) {
   }
 }
 
-document.querySelector('#like-btn').addEventListener('click', uplikeClickHandler);
+document.querySelector('#uplove-btn').addEventListener('click', uploveClickHandler);

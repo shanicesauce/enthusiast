@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Like, Comment, Interest, InterestLevel } = require('../../models');
+const {User, Post, Love, Comment, Interest, InterestLevel, } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //GET /api/users
@@ -28,7 +28,7 @@ router.get('/:id', (req, res) => {
       },
       {
         model: InterestLevel,
-        attributes: ['id','level'] ,
+        attributes: ['id', 'level'],
       },
       {
         model: Post,
@@ -44,8 +44,8 @@ router.get('/:id', (req, res) => {
       },
       {
         model: Post,
-        through: Like,
-        as: 'liked_post',
+        through: Love,
+        as: 'loved_post',
         attributes: ['post_text'],
       },
     ],
@@ -72,18 +72,19 @@ router.post('/', (req, res) => {
     password: req.body.password,
     name_first: req.body.name_first,
     name_last: req.body.name_last,
-    interest_id: req.body.interest
-  }).then((dbUserData) => {
-    console.log(dbUserData);
-    req.session.save(() => {
-      req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
-      req.session.logIn = true;
-
-      res.json(dbUserData);
-    });
+    interest_id: req.body.interest,
   })
-    .catch(err => {
+    .then((dbUserData) => {
+      console.log(dbUserData);
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.logIn = true;
+
+        res.json(dbUserData);
+      });
+    })
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
