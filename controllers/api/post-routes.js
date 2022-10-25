@@ -19,14 +19,12 @@ const upload = multer({ storage: storage });
 
 router.get('/', (req, res) => {
   Post.findAll({
-    where: {
-      interest_id : req.body.interest_id
-    },
     attributes: [
       'id',
       'image',
       'post_text',
       'created_at',
+      'interest_id'
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     order: [['created_at', 'DESC']],
@@ -47,6 +45,10 @@ router.get('/', (req, res) => {
           attributes: ['id', 'hobby'],
         },
       },
+      // {
+      //   model: Interest,
+      //   attributes: ['id', 'hobby'],
+      // },
     ],
   })
     .then((dbPostData) => res.json(dbPostData))
@@ -55,6 +57,46 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+// router.get('/', (req, res) => {
+//   Post.findAll({
+//     where: {
+//       interest_id: req.params.interest_id,
+//     },
+//     attributes: [
+//       'id',
+//       'image',
+//       'post_text',
+//       'created_at',
+//       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+//     ],
+//     order: [['created_at', 'DESC']],
+//     include: [
+//       {
+//         model: Comment,
+//         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at',],
+//         include: {
+//           model: User,
+//           attributes: ['username']
+//         },
+//       },
+//       {
+//         model: User,
+//         attributes: ['username'],
+//         include: {
+//           model: Interest,
+//           attributes: ['id', 'hobby'],
+//         },
+//       },
+//     ],
+//   })
+//     .then((dbPostData) => res.json(dbPostData))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
+
 router.get('/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -106,6 +148,7 @@ router.post('/', upload.single('image'), withAuth, (req, res) => {
   Post.create({
     image: req.file.filename,
     post_text: req.body.post_text,
+    interest_id: req.body.interest_id,
     user_id: req.session.user_id,
   })
     // eslint-disable-next-line no-unused-vars
@@ -136,6 +179,7 @@ router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {
       post_text: req.body.post_text,
+      interest_id: req.body.interest_id,
     },
     {
       where: {
