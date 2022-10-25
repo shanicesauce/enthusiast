@@ -68,24 +68,22 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id',
 });
 
-User.belongsTo(Interest, {
-  foreignKey: 'interest_id',
-});
+// User.belongsTo(Interest, {
+//   foreignKey: 'interest_id',
+// });
 
 Interest.hasMany(User, {
   foreignKey: 'interest_id',
   onDelete: 'SET NULL',
 });
 
-// Post.belongsTo(Interest, {
-//   foreignKey: 'interest_id',
-//   onDelete: 'SET NULL',
-// });
+Post.belongsTo(Interest, {
+  foreignKey: 'interest_id'
+});
 
-// Interest.hasMany(Post, {
-//   foreignKey: 'interest_id',
-//   onDelete: 'SET NULL',
-// });
+Interest.hasMany(Post, {
+  foreignKey: 'interest_id'
+});
 
 User.hasOne(InterestLevel, {
   foreignKey: 'interest_level_id'

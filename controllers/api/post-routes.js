@@ -18,6 +18,9 @@ const upload = multer({ storage: storage });
 
 router.get('/', (req, res) => {
   Post.findAll({
+    where: {
+      interest_id : req.body.interest_id
+    },
     attributes: [
       'id',
       'image',
