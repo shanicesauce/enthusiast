@@ -67,13 +67,13 @@ Post.init(
         key: 'id',
       },
     },
-    // interest_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'interest',
-    //     key: 'id'
-    //   }
-    // },
+    interest_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'interest',
+        key: 'id'
+      }
+    },
   },
   {
     sequelize,
