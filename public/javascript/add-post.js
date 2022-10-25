@@ -2,12 +2,12 @@ async function newFormHandler(event) {
   event.preventDefault();
 
   const post_text = document.querySelector('textarea[name="post_text"]').value;
-  const image = document.querySelector('input[name="image"]').value;
+  const image = document.querySelector('input[name="image"]');
   debugger
   const response = await fetch('/api/posts', {
     method: 'POST',
     body: JSON.stringify({
-      image,
+      image: image.files[0],
       post_text
     }),
     headers: {
@@ -23,6 +23,6 @@ async function newFormHandler(event) {
   }
 }
 
-document.querySelector('#new-post-form').addEventListener('submit', newFormHandler);
+// document.querySelector('#new-post-form').addEventListener('submit', newFormHandler);
 
 // module.exports = image;

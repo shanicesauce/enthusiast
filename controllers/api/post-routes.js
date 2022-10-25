@@ -3,14 +3,17 @@ const { Post, User, Like, Comment, Interest } = require('../../models');
 // const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 const multer = require('multer');
+const path = require('path');
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './Images');
+    cb(null, './public/Images');
   },
   filename: (req, file, cb) => {
     console.log(file);
-    cb(null, Date.now() + path.extname(file.originalname));
+    debugger
+    cb(null, `${Date.now()}-${file.originalname}`); 
   },
 });
 
@@ -25,6 +28,7 @@ router.get('/', (req, res) => {
       'created_at',
       // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
+    order: [['created_at', 'DESC']],
     include: [
       {
         model: Comment,
@@ -98,12 +102,13 @@ router.get('/:id', (req, res) => {
 router.post('/', upload.single('image'), withAuth, (req, res) => {
   //expects { post_text: 'https://taskmaster.com/press', user_id: 1}
   console.log(JSON.stringify(req.file));
+  debugger
   Post.create({
-    image: req.body.file,
+    image: req.file.filename,
     post_text: req.body.post_text,
     user_id: req.session.user_id,
   })
-    .then((dbPostData) => res.json(dbPostData))
+    .then((dbPostData) => res.redirect("/dashboard"))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
