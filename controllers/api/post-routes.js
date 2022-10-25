@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const router = require('express').Router();
 const { Post, User, Love, Comment, Interest } = require('../../models');
 const sequelize = require('../../config/connection');
@@ -49,7 +50,11 @@ router.get('/', (req, res) => {
       // },
     ],
   })
-    .then((dbPostData) => res.json(dbPostData))
+    .then((dbPostData) => {
+     res.json(dbPostData);
+     console.log(dbPostData);
+     console.log('----{ fjdeiowa fhjodas fjdkls jafoejrioqw fjioewa fovjoe iafvjo}----');
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -132,6 +137,8 @@ router.get('/:id', (req, res) => {
         return;
       }
       res.json(dbPostData);
+      console.log('PLEASE PLEASE PLEASE PLEASE PLEASE PLEASE PLEASE');
+
     })
     .catch((err) => {
       console.log(err);
