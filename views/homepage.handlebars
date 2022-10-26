@@ -1,8 +1,9 @@
 <section class="post-list">
     <div class="row">        
-    <h2 class="section-title col-md-4 mt-4 ml-3 mb-0">Stuff You'll Love</h2>
-    <div class="form-group col-md-4">
-          <label for="interestInput" class="section-title mt-1">Choose An Interest</label>
+        <h2 class="section-title col-md-4 mt-4 ml-3 mb-0">Stuff You'll Love</h2>
+        {{#if loggedIn}}
+        <div class="form-group col-md-4">
+          <label for="interestInput" class="section-title mt-1">Choose Your Interest</label>
           <select class="form-control" id="interest-signup">
             <option selected>Choose...</option>
             <option value="1">Music</option>
@@ -13,7 +14,8 @@
             <option value="6">Food</option>
           </select>
         </div>
-        </div>
+        {{/if}}
+    </div>
     {{#each posts as |post|}}
         <li>
             <a href="/post/{{id}}">

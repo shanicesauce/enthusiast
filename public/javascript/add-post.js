@@ -10,7 +10,8 @@ async function newFormHandler(event) {
     method: 'POST',
     body: JSON.stringify({
       image: image.files[0],
-      post_text
+      post_text,
+      interest_id
     }),
     headers: {
       'Content-Type': 'application/json',

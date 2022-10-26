@@ -53,7 +53,6 @@ router.get('/', (req, res) => {
     .then((dbPostData) => {
      res.json(dbPostData);
      console.log(dbPostData);
-     console.log('----{ fjdeiowa fhjodas fjdkls jafoejrioqw fjioewa fovjoe iafvjo}----');
     })
     .catch((err) => {
       console.log(err);
