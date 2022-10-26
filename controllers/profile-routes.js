@@ -78,4 +78,31 @@ router.get('/:id', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+
+router.get('/edit/:id', withAuth, (req, res) => {
+  User.findByPk(req.params.id, {
+    attributes: { exclude: ['password']},
+    include: [
+      {
+        model: Interest,
+        attributes: ['hobby'],
+      },
+    ],
+  })
+    .then((liUserData) => {
+      const user = liUserData.dataValues;
+      // const arrayData = Object.values(user);
+      const interest = user.interest.dataValues.hobby;
+      //pass data to template
+      res.render('edit-profile', {
+        interest, user,
+        loggedIn: true,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
