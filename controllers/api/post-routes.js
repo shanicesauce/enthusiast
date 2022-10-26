@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
       'image',
       'post_text',
       'created_at',
-      'interest_id'
+      'interest_id',
       [sequelize.literal('(SELECT COUNT(*) FROM love WHERE post.id = love.post_id)'), 'love_count']
     ],
     order: [['created_at', 'DESC']],

@@ -3,10 +3,22 @@
     <h2>Your Profile</h2>
   </div>
   <div class="card-body form-bg-custom">
-    <p>Name: {{user.name_first}} {{user.name_last}}</p>
-    <p>Username: {{user.username}}</p>
-   <a href="mailto:{{user.email}}"> Email: {{user.email}}</a>
-    <p>Interest: {{interest}}</p>
+    <div class="row">
+      <h5 class="col" style="color: #218380">Name</h5>
+      <h6 class="col">{{user.name_first}} {{user.name_last}}</h6>
+    </div>  
+    <div class="row">
+      <h5 class="col" style="color: #218380">Username</h5>
+      <h6 class="col">{{user.username}}</h6>
+    </div>
+    <div class="row">
+      <h5 class="col" style="color: #218380">Email</h5>
+      <h6 class="col app-link"><a href="mailto:">{{user.email}}</a></h6>
+    </div>
+    <div class="row">
+      <h5 class="col" style="color: #218380">Interest</h5>
+      <h6 class="col">{{interest}}</h6>
+    </div>
     {{!-- <p>Interest Level:</p> --}}
   </div>
 </div>
