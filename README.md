@@ -5,7 +5,7 @@ https://protected-bastion-76221.herokuapp.com/
   [![License: ISC](https://img.shields.io/badge/license-ISC-blue.svg)](#license)
 
   ## Description
-  Enthusiast is a social media site designed to connect people based their hobbies and interests. Users can create a profile with their name and email address for others with similar interest can contact them to connect and collaborate. Once logged in, users can browse posts from other users based an interest of their choosing, post their thoughts, opinions, and ideas along with an image if they choose. User can also comment on and like posts as well as edit their own posts.
+  Enthusiast is a social media application designed to connect people based their hobbies and interests. Users can create a profile with their name and email address so other users with similar interest can contact them to connect and collaborate. Once logged in, users can browse posts from other users based an interest of their choosing, post their thoughts, opinions, and ideas along with an image if they choose. User can also comment on and like posts as well as edit their own posts.
 
   ## Table of Contents
   - [Installation](#installation)
