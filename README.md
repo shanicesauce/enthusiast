@@ -1,6 +1,6 @@
 # Enthusiast
 
-https://protected-bastion-76221.herokuapp.com/
+https://afternoon-plateau-77681.herokuapp.com/
 
   [![License: ISC](https://img.shields.io/badge/license-ISC-blue.svg)](#license)
 
