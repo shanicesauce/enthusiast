@@ -98,8 +98,6 @@ router.get('/:id', (req, res) => {
         return;
       }
       res.json(dbPostData);
-      console.log('PLEASE');
-
     })
     .catch((err) => {
       console.log(err);
