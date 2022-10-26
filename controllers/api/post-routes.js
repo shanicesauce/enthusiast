@@ -119,8 +119,8 @@ router.post('/', upload.single('image'), withAuth, (req, res) => {
     })
       // eslint-disable-next-line no-unused-vars
       .then((dbPostData) =>
-      // res.redirect('/dashboard')
-      console.log(dbPostData)
+      res.redirect('/dashboard')
+      // console.log(dbPostData)
       )
       .catch((err) => {
         console.log(err);
