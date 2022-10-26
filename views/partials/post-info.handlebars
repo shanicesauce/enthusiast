@@ -1,21 +1,16 @@
 <div>
+  {{!-- <span class="badge badge-primary">{{interest.value}}</span> --}}
   {{#if image}}
   <img  width="200" src="/Images/{{image}}" />
   {{/if}}
   {{post_text}}
-  
-
 </div class="meta">
-{{!-- {{#if love_count}} --}}
-{{love_count}} 
 
-{{!-- {{format_plural "love" love_count.length}} --}}
-{{!-- {{/if}} --}}
+{{love_count}} {{format_plural "🖤" love_count}}
 by
-{{user.username}}
+<a class="app-link" href="/profile/{{id}}">{{user.username}}</a>
 on
 {{format_date created_at}}
-|
 <a class="app-link" href="/post/{{id}}">{{comments.length}}
   {{format_plural "comment" comments.length}}</a>
 

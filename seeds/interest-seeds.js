@@ -2,23 +2,29 @@ const { Interest } = require('../models');
 
 const interestData = [
   {
-    hobby: 'music',
+    hobby: 'Music',
+    //1
   },
   {
-    hobby: 'travel',
+    hobby: 'Travel',
+    //2
   },
   {
-    hobby: 'sports',
+    hobby: 'Sports',
+    //3
   },
   {
-    hobby: 'fashion',
+    hobby: 'Fashion',
+    //4
   },
   {
-    hobby: 'tech',
+    hobby: 'Tech',
+    //5
 
   },
   {
-    hobby: 'food'
+    hobby: 'Food'
+    //6
   }
 ];
 
