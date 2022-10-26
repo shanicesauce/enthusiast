@@ -21,7 +21,8 @@ User.init(
     },
     username: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     email: {
       type: DataTypes.STRING,
@@ -49,7 +50,7 @@ User.init(
         key: 'id'
       }
     },
-    intrest_level_id: {
+    interest_level_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'interest_level',

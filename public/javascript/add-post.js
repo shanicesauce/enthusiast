@@ -3,6 +3,7 @@ async function newFormHandler(event) {
   event.preventDefault();
 
   const post_text = document.querySelector('textarea[name="post_text"]').value;
+  const interest = document.querySelector('#interest-signup').value;
   const image = document.querySelector('input[name="image"]');
   // const img = document.getElementById('img');
   // img.setAttribute('src', '');
@@ -10,7 +11,8 @@ async function newFormHandler(event) {
     method: 'POST',
     body: JSON.stringify({
       image: image.files[0],
-      post_text
+      post_text,
+      interest
     }),
     headers: {
       'Content-Type': 'application/json',

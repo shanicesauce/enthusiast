@@ -1,9 +1,11 @@
 <div class="card my-3">
   <h2 class="card-header form-title">Create New Post</h2>
   <div class="card-body form-bg-custom">
+    <div class="form-group col-md-4">
+        </div>
     <form id="new-post-form" name="new-post-form" method="POST" action="/api/posts" enctype="multipart/form-data">
       <div class="form-group">
-          <h3 style="color: #218380">Upload Image</h3>
+          <h4 style="color: #218380">Upload Image</h4>
           <input type="file" name="image">
           <textarea
             class="form-control"
@@ -11,6 +13,18 @@
             id="post-text"
             name="post_text"
           ></textarea>
+           <label for="interestInput">
+           <h4 style="color: #218380">Assign Interest</h4>
+          </label>
+           <select class="form-control" id="interest-signup" name="interest">
+            <option selected>Choose...</option>
+            <option value="1">Music</option>
+            <option value="2">Travel</option>
+            <option value="3">Sports</option>
+            <option value="4">Fashion</option>
+            <option value="5">Tech</option>
+            <option value="6">Food</option>
+          </select>
       </div>
       <button type="submit" class="btn btn-custom" value="Upload">Submit Post</button>
   </div>
