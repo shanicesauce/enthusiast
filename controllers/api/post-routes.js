@@ -114,11 +114,14 @@ router.post('/', upload.single('image'), withAuth, (req, res) => {
     Post.create({
       image: req.file.filename,
       post_text: req.body.post_text,
-      interest_id: req.body.interest_id,
+      interest_id: req.body.interest,
       user_id: req.session.user_id,
     })
       // eslint-disable-next-line no-unused-vars
-      .then((dbPostData) => res.redirect('/dashboard'))
+      .then((dbPostData) =>
+      res.redirect('/dashboard')
+      // console.log(dbPostData)
+      )
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
@@ -144,11 +147,13 @@ router.post('/', withAuth, (req, res) => {
   console.log(JSON.stringify(req.file));
   Post.create({
     post_text: req.body.post_text,
-    interest_id: req.body.interest_id,
+    interest_id: req.body.interest,
     user_id: req.session.user_id,
   })
     // eslint-disable-next-line no-unused-vars
-    .then((dbPostData) => res.redirect('/dashboard'))
+    .then((dbPostData) =>
+    //  res.redirect('/dashboard')
+     console.log(dbPostData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);

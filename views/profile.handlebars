@@ -5,8 +5,10 @@
   <div class="card-body form-bg-custom">
     <p>Name: {{user.name_first}} {{user.name_last}}</p>
     <p>Username: {{user.username}}</p>
-    <p>Email: {{user.email}}</p>
+   <a href="mailto:{{user.email}}"> Email: {{user.email}}</p></a>
     <p>Interest: {{interest}}</p>
     {{!-- <p>Interest Level:</p> --}}
   </div>
 </div>
+
+{{!-- <a href="mailto:shanicesaucedaworks@gmail.com"></a> --}}
