@@ -45,9 +45,9 @@ User.init(
     interest_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      key: 'id',
       references: {
         model: 'interest',
-        key: 'id'
       }
     },
     interest_level_id: {
