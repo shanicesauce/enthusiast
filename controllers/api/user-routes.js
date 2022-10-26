@@ -42,12 +42,12 @@ router.get('/:id', (req, res) => {
           attributes: ['post_text'],
         },
       },
-      {
-        model: Post,
-        through: Love,
-        as: 'loved_post',
-        attributes: ['post_text'],
-      },
+      // {
+      //   model: Post,
+      //   through: Love,
+      //   as: 'loved_post',
+      //   attributes: ['post_text'],
+      // },
     ],
   })
     .then((dbUserData) => {
