@@ -49,7 +49,7 @@ User.init(
         key: 'id'
       }
     },
-    intrest_level_id: {
+    interest_level_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'interest_level',
