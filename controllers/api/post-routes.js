@@ -119,7 +119,6 @@ router.post('/', upload.single('image'), withAuth, (req, res) => {
       // eslint-disable-next-line no-unused-vars
       .then((dbPostData) =>
       res.redirect('/dashboard')
-      // console.log(dbPostData)
       )
       .catch((err) => {
         console.log(err);
@@ -128,11 +127,12 @@ router.post('/', upload.single('image'), withAuth, (req, res) => {
   }else{
     Post.create({
       post_text: req.body.post_text,
-      interest_id: req.body.interest_id,
+      interest_id: req.body.interest,
       user_id: req.session.user_id,
     })
       // eslint-disable-next-line no-unused-vars
-      .then((dbPostData) => res.redirect('/dashboard'))
+      .then((dbPostData) =>
+      res.redirect('/dashboard'))
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);

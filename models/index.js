@@ -70,7 +70,7 @@ Post.hasMany(Comment, {
 User.belongsTo(Interest, {
   foreignKey: 'interest_id',
 });
-
+//^^^^^^^//
 Interest.hasMany(User, {
   foreignKey: 'interest_id',
   onDelete: 'SET NULL',
