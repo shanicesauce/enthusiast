@@ -7,6 +7,7 @@ async function signupFormHandler(event) {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
   const interest = document.querySelector('#interest-signup').value;
+  // const level = document.querySelector('.form-check').value;
   // const options = {
   //   Music: {
   //     value: '1',
@@ -38,7 +39,7 @@ async function signupFormHandler(event) {
         username,
         email,
         password,
-        interest
+        interest,
       }),
       headers: { 'Content-Type': 'application/json' },
     });

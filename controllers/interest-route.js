@@ -13,7 +13,7 @@ router.get('/:interest_id', (req, res) => {
       'post_text',
       'created_at',
       'interest_id',
-      [sequelize.literal('(SELECT COUNT(*) FROM love WHERE post.id = love.post_id)'), 'love_count']
+      // [sequelize.literal('(SELECT COUNT(*) FROM love WHERE post.id = love.post_id)'), 'love_count']
     ],
     order: [['created_at', 'DESC']],
     include: [
