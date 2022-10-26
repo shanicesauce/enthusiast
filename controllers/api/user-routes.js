@@ -130,7 +130,7 @@ router.post('/logout', (req, res) => {
 });
 
 //update user info
-router.put('/:id', withAuth, (req, res) => {
+router.put('/profile/:id', withAuth, (req, res) => {
   //expects {username: 'name', email:'name@email.com, password: 'password1}
   User.update(req.body, {
     individualHooks: true,
