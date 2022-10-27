@@ -1,4 +1,5 @@
 const router = require('express').Router();
+// eslint-disable-next-line no-unused-vars
 const {User, Post, Love, Comment, Interest, InterestLevel, } = require('../../models');
 const withAuth = require('../../utils/auth');
 
