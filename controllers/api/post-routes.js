@@ -107,7 +107,7 @@ router.get('/:id', (req, res) => {
 
 //create post
 router.post('/', upload.single('image'), withAuth, (req, res) => {
-  //expects { post_text: 'https://taskmaster.com/press', user_id: 1}
+  //expects { image: optional, post_text: 'some text', interest, user_id: 1}
   console.log(JSON.stringify(req.file));
   if (req.file) {
     Post.create({
@@ -139,7 +139,7 @@ router.post('/', upload.single('image'), withAuth, (req, res) => {
 
 //create post
 router.post('/', withAuth, (req, res) => {
-  //expects { post_text: 'https://taskmaster.com/press', user_id: 1}
+  //expects { post_text: 'some text', user_id: 1}
   console.log(JSON.stringify(req.file));
   Post.create({
     post_text: req.body.post_text,

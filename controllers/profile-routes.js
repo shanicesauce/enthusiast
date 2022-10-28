@@ -67,11 +67,7 @@ router.get('/:id', withAuth, (req, res) => {
       // const users = userData.map((user) => user.get({ plain: true }));
       res.render('profile',
         {interest, user, loggedIn: true}
-        // console.log('/////'),
-
-        // console.log(interestData)
       );
-      console.log(user);
     })
     .catch((err) => {
       console.log(err);
@@ -80,7 +76,10 @@ router.get('/:id', withAuth, (req, res) => {
 });
 
 router.get('/edit/:id', withAuth, (req, res) => {
-  User.findByPk(req.params.id, {
+  User.findOne({
+    where: {
+      id: req.session.user_id,
+    },
     attributes: { exclude: ['password']},
     include: [
       {
