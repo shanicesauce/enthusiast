@@ -7,18 +7,6 @@ async function getInterestpost(event) {
   document.location.replace(`/interest/${interest}`);
 }
 
-//   if (interest) {
-// const response = await fetch(`/api/interest/${interest}`, {
-//   method: 'GET',
-//   headers: { 'Content-Type': 'application/json' },
-// });
-
-//   if (response.ok) {
-//     document.location.replace('/');
-//   } else {
-//     alert(response.statusText);
-//   }
-
 
 document
   .querySelector('#interest-signup')

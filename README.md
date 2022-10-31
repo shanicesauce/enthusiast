@@ -1,11 +1,11 @@
 # Enthusiast
 
-https://protected-bastion-76221.herokuapp.com/
+https://afternoon-plateau-77681.herokuapp.com/
 
   [![License: ISC](https://img.shields.io/badge/license-ISC-blue.svg)](#license)
 
   ## Description
-  Enthusiast is a social media application designed to connect people based their hobbies and interests. Users can create a profile with their name and email address so other users with similar interest can contact them to connect and collaborate. Once logged in, users can browse posts from other users based an interest of their choosing, post their thoughts, opinions, and ideas along with an image if they choose. User can also comment on and like posts as well as edit their own posts.
+  Enthusiast is a social media application designed to connect people based their hobbies and interests. Users can create a profile with their name and email address so other users with similar interests can contact them to connect and collaborate. Once logged in, users can browse posts from other users based an interest of their choosing, post their thoughts, opinions, and ideas along with an image if they choose. User can also comment on and like posts as well as edit their own posts.
 
   ![signup](https://user-images.githubusercontent.com/105762638/198713033-b2da7128-4575-408b-be68-1a11539da416.png)
 
@@ -16,6 +16,8 @@ https://protected-bastion-76221.herokuapp.com/
 ![dashboard_your_posts](https://user-images.githubusercontent.com/105762638/198713022-a94c54ea-1fca-4373-88e4-3b6ef6e80acf.png)
 
 ![dashboard_edit_post](https://user-images.githubusercontent.com/105762638/198713019-c55ba429-e81e-449b-bc81-0783729c6a02.png)
+
+![home_image_posts](https://user-images.githubusercontent.com/105762638/199052550-387f2ab7-4dad-4cdc-81d3-ad6f199d2422.png)
 
 ![home_filtered_interest](https://user-images.githubusercontent.com/105762638/198713013-39eeab00-e56a-437b-861c-de12f5ca2635.png)
 
@@ -36,7 +38,7 @@ https://protected-bastion-76221.herokuapp.com/
   ## Usage
   Instructions for use Enthusiast:
 
-  Sign up, login, browse, post, comment.
+  Sign up, login, browse, post, comment, and email other users!
 
   ## License
     This application is covered under ISC. To read view documentation about this license, please visit the link below.
@@ -45,7 +47,7 @@ https://protected-bastion-76221.herokuapp.com/
   ## Contributing
   Guidelines to contribute to this project:
 
-  Clone repo, create sandbox branch, submit pull request to be reviewed.
+  Clone the repository, create sandbox branch, and submit pull request to be reviewed.
 
   ## Tests
   No tests are available at this time.

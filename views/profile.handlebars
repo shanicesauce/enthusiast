@@ -19,13 +19,10 @@
       <h5 class="col" style="color: #218380">Interest</h5>
       <h6 class="col">{{interest}}</h6>
     </div>
-    {{!-- {{#if user.session.id}} --}}
+    {{#if user.session.id}}
     <button class="btn" id="edit-profile-btn">
-      <a href="/profile/edit/{{id}}">Edit Profile</a>            
+      <a href="/profile/edit/{{user.id}}">Edit Profile</a>            
     </button>
-    {{!-- {{/if}} --}}
-    {{!-- <p>Interest Level:</p> --}}
+    {{/if}}
   </div>
 </div>
-
-{{!-- <a href="mailto:shanicesaucedaworks@gmail.com"></a> --}}
