@@ -1,6 +1,6 @@
 <div class="card my-5">
   <div class="card-header form-title">
-    <h2>Your Profile</h2>
+    <h2>{{user.username}}'s</h2>
   </div>
   <div class="card-body form-bg-custom">
     <div class="row">
@@ -19,11 +19,10 @@
       <h5 class="col" style="color: #218380">Interest</h5>
       <h6 class="col">{{interest}}</h6>
     </div>
-    <button class="btn" id="edit-post-btn">
-              <a href="/dashboard/edit/{{id}}">Edit Post</a>            
-            </button>
-    {{!-- <p>Interest Level:</p> --}}
+    {{#if user.session.id}}
+    <button class="btn" id="edit-profile-btn">
+      <a href="/profile/edit/{{user.id}}">Edit Profile</a>            
+    </button>
+    {{/if}}
   </div>
 </div>
-
-{{!-- <a href="mailto:shanicesaucedaworks@gmail.com"></a> --}}

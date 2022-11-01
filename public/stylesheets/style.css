@@ -37,6 +37,14 @@
   background-color: #800e13;
   color: #adeee3;
 }
+#edit-profile-btn {
+  background-color: #ef6ba9;
+  color: #2d3047;
+}
+#delete-profile-btn {
+  background-color: #800e13;
+  color: #adeee3;
+}
 ol li {
   list-style-type: none;
 }
@@ -51,6 +59,3 @@ a:hover {
 .app-link {
   color: #218380;
 }
-/* #img img[src="/Images/{{''}}"] {
-    display: none;
-  } */

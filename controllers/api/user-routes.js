@@ -1,4 +1,5 @@
 const router = require('express').Router();
+// eslint-disable-next-line no-unused-vars
 const {User, Post, Love, Comment, Interest, InterestLevel, } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -42,12 +43,12 @@ router.get('/:id', (req, res) => {
           attributes: ['post_text'],
         },
       },
-      {
-        model: Post,
-        through: Love,
-        as: 'loved_post',
-        attributes: ['post_text'],
-      },
+      // {
+      //   model: Post,
+      //   through: Love,
+      //   as: 'loved_post',
+      //   attributes: ['post_text'],
+      // },
     ],
   })
     .then((dbUserData) => {

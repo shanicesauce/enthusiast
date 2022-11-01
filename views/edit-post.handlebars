@@ -7,7 +7,42 @@
       Edit Post
     </h2>
     <div class="card-body form-bg-custom">
-      <form class="edit-post-form">
+      <form id="new-post-form" name="new-post-form" method="POST" action="/api/posts" enctype="multipart/form-data">
+      <div class="form-group">
+          <h4 style="color: #218380">Upload Image</h4>
+          <input type="file" name="image">
+          <textarea
+            class="form-control"
+            rows="5"
+            id="post-text"
+            name="post_text"
+          >{{post.post_text}}</textarea>
+           <label for="interestInput">
+           <h4 style="color: #218380">Assign Interest</h4>
+          </label>
+           <select class="form-control" id="interest-signup" name="interest">
+            <option selected>Choose...</option>
+            <option value="1">Music</option>
+            <option value="2">Travel</option>
+            <option value="3">Sports</option>
+            <option value="4">Fashion</option>
+            <option value="5">Tech</option>
+            <option value="6">Food</option>
+          </select>
+      </div>
+      <div>
+          by you on
+          {{format_date post.created_at}}
+          |
+          <a class="app-link" href="/post/{{post.id}}">{{post.comments.length}}
+            {{format_plural "comment" post.comments.length}}</a>
+        </div>
+        <button class="btn btn-custom" type="submit" value="Upload">Save post</button>
+        <button class="btn" type="button" id="delete-post-btn">Delete post</button>
+      </form>
+  </div>
+</div>
+      {{!-- <form class="edit-post-form">
         <div class="form-group">
           <textarea
             type="text"
@@ -28,7 +63,7 @@
       </form>
     </div>
   </div>
-</article>
+</article> --}}
 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>

@@ -5,8 +5,8 @@ async function editProfileHandler(event) {
   const name_last = document.querySelector('#name_last-edit').value.trim();
   const username = document.querySelector('#username-edit').value.trim();
   const email = document.querySelector('#email-edit').value.trim();
-  //   const password = document.querySelector('#password-signup').value.trim();
   const interest = document.querySelector('#interest-edit').value;
+  //   const password = document.querySelector('#password-signup').value.trim();
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
